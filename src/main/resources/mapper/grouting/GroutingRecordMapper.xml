@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youlai.boot.modules.Grouting.mapper.GroutingRecordMapper">
+    <!-- 多条件组合查询 -->
+    <select id="selectByConditions" resultType="com.youlai.boot.modules.Grouting.model.GroutingRecord">
+        SELECT * FROM grouting_records
+        <where>
+            <if test="params.shieldMachineNo != null and params.shieldMachineNo != ''">
+                AND shield_machine_no = #{params.shieldMachineNo}
+            </if>
+            <if test="params.equipmentNo != null and params.equipmentNo != ''">
+                AND equipment_no = #{params.equipmentNo}
+            </if>
+            <if test="params.projectSection != null and params.projectSection != ''">
+                AND project_section = #{params.projectSection}
+            </if>
+            <if test="params.phase != null and params.phase != ''">
+                AND phase = #{params.phase}
+            </if>
+            <if test="params.bidSection != null and params.bidSection != ''">
+                AND bid_section = #{params.bidSection}
+            </if>
+            <if test="params.intervalName != null and params.intervalName != ''">
+                AND interval_name = #{params.intervalName}
+            </if>
+            <if test="params.constructionUnit != null and params.constructionUnit != ''">
+                AND construction_unit = #{params.constructionUnit}
+            </if>
+            <if test="params.constructionTeam != null and params.constructionTeam != ''">
+                AND construction_team = #{params.constructionTeam}
+            </if>
+            <if test="params.pileNo != null and params.pileNo != ''">
+                AND pile_no = #{params.pileNo}
+            </if>
+            <if test="params.ringNo != null and params.ringNo != ''">
+                AND ring_no = #{params.ringNo}
+            </if>
+        </where>
+        ORDER BY interval_start_time DESC
+    </select>
+
+    <!-- 多条件分页查询 -->
+    <select id="selectByConditionsPage" resultType="com.youlai.boot.modules.Grouting.model.GroutingRecord">
+        SELECT * FROM grouting_records
+        <where>
+            <if test="params.shieldMachineNo != null and params.shieldMachineNo != ''">
+                AND shield_machine_no = #{params.shieldMachineNo}
+            </if>
+            <if test="params.equipmentNo != null and params.equipmentNo != ''">
+                AND equipment_no = #{params.equipmentNo}
+            </if>
+            <if test="params.projectSection != null and params.projectSection != ''">
+                AND project_section = #{params.projectSection}
+            </if>
+            <!-- 其他条件同上 -->
+        </where>
+        ORDER BY interval_start_time DESC
+    </select>
+
+</mapper>

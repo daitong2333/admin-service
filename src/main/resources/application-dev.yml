@@ -220,3 +220,11 @@ wx:
   miniapp:
     app-id: xxxxxx
     app-secret: xxxxxx
+
+# 消息队列mqtt
+mqtt:
+  broker-url: tcp://8.148.65.133:1883  # MQTT 服务器地址 tcp// 1883 ws// 8083
+  client-id: grouting-client1             # 客户端 ID
+  username: ""                                    # 用户名（可选）
+  password: ""                                    # 密码（可选）
+  default-topic: grouting-client1/topic           # 默认主题
